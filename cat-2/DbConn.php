@@ -1,16 +1,17 @@
 <?php
-// Task 4: Creating database connection using PDO
-
-include 'constants.php'; // Importing constant values
+// Include the file with database constants
+include 'constants.php';
 
 try {
-    // Establishing a PDO connection without a password
-    $DbConn = new PDO("mysql:host=".DB_SERVER.";dbname=".DB_NAME, DB_USERNAME);
+    // Establishing a PDO connection without any additional security measures
+    $DbConn = new PDO("mysql:host=".DB_SERVER.";dbname=".DB_NAME, DB_USERNAME, DB_PASSWORD);
 
-    // Setting the PDO error mode to exception
+    // Simple error mode setting
     $DbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     echo "Connected successfully"; 
 } catch(PDOException $e) {
+    // Basic error handling
     echo "Connection failed: " . $e->getMessage();
 }
 ?>
